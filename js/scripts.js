@@ -1,4 +1,4 @@
-function validar(nombre, apellidos, edad, sexo, usuario, password) {
+function validar(nombre, apellidos, fechaNacimiento, sexo, usuario, password) {
     let concatenarMensaje = "";
     
     if(nombre == '' || nombre == null) {
@@ -7,14 +7,16 @@ function validar(nombre, apellidos, edad, sexo, usuario, password) {
     if(apellidos == '' || apellidos == null) {
         concatenarMensaje = concatenarMensaje + "<br/> > Ingrese el apellido";
     }
-    if(edad <= 17 && edad >= 0) {
+    /*
+    if(fechaNacimiento <= 17 && fechaNacimiento >= 0) {
         concatenarMensaje = concatenarMensaje + "<br/> > El usuario es menor de edad, no puede registrarse";
     } 
+    */
     if(sexo == '' || sexo == null) {
         concatenarMensaje = concatenarMensaje + "<br/> > Seleccione el sexo";
     }
-    if(edad <= -1) {
-        concatenarMensaje = concatenarMensaje + "<br/> > Todavía no naces";
+    if(fechaNacimiento == '' || fechaNacimiento == null) {
+        concatenarMensaje = concatenarMensaje + "<br/> > Ingresa tu fecha de nacimiento";
     }
     if(usuario == '') {
         concatenarMensaje = concatenarMensaje + "<br/> > ingresa el usuario";
@@ -35,11 +37,11 @@ function validar(nombre, apellidos, edad, sexo, usuario, password) {
 function registro() {
     let debug = true;
     let mostrarMensaje = false;
-    // variables
     
+    // variables
     let $nombre = document.getElementById("nombre");
     let $apellidos = document.getElementById("apellidos");
-    let $edad = document.getElementById("edad");
+    let $fechaNacimiento = document.getElementById("fechaNacimiento");
     let $domicilio = document.getElementById("domicilio");
     let $usuario = document.getElementById("usuario");
     let $contraseña = document.getElementById("contraseña");
@@ -49,7 +51,7 @@ function registro() {
     if(debug) {
         console.log("input nombre: " + $nombre + " el valor que tiene es de " + $nombre.value);
         console.log("input apellidos: " + $apellidos + " el valor que tiene es de " + $apellidos.value);
-        console.log("input edad: " + $edad + " el valor que tiene es de " + $edad.value);
+        console.log("input fechaNacimiento: " + $fechaNacimiento + " el valor que tiene es de " + $fechaNacimiento.value);
         console.log("input domicilio: " + $domicilio + " el valor que tiene es de " + $domicilio.value);
         console.log("input usuario: " + $usuario + " el valor que tiene es de " + $usuario.value);
         console.log("input contraseña: " + $contraseña + " el valor que tiene es de " + $contraseña.value);
@@ -58,16 +60,16 @@ function registro() {
 
     let nombreUsuario = $nombre.value;
     let apellidosUsuario = $apellidos.value;
-    let edadUsuario = $edad.value;
+    let fechaNacimientoUsuario = $fechaNacimiento.value;
     let sexoUsuario = $sexo.value;
     let domicilioUsuario = $domicilio.value;
     let usuario = $usuario.value;
     let contraseña  = $contraseña.value; 
 
-    
 
-    if(validar(nombreUsuario, apellidosUsuario, edadUsuario, sexoUsuario, usuario, contraseña)) {
+    if(validar(nombreUsuario, apellidosUsuario, fechaNacimientoUsuario, sexoUsuario, usuario, contraseña)) {
             // Recoger los datos del formulario
+            /*
             const formData = new FormData($formulario);
             const data = Object.fromEntries(formData.entries());
             console.log(`formData ${data} `);
@@ -82,6 +84,6 @@ function registro() {
             .then(response => response.json())
             .then(data => console.log('Respuesta del servidor:', data))
             .catch(error => console.error('Request fails:', error));
-       
+       */
     }
 }
